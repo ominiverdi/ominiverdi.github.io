@@ -1,23 +1,24 @@
 $("document").ready(function () {
-    
+
     let buttons = $("button");
     buttons.click(function () {
         buttonClicked($(this))
-        
-       
+
+
     });
     //window["functionName"]();
 
 })
-function buttonClicked(element){
+
+function buttonClicked(element) {
     console.log(element.text())
-    
+
     console.log($(this))
-let targets = $(".counter");
-targets.each(function (index) {
-    window[element.text()](targets[index]);
-    // if (typeof $(targets[index]).text !== "undefined") count(targets[index])
-});
+    let targets = $(".counter");
+    targets.each(function (index) {
+        window[element.text()](targets[index]);
+        // if (typeof $(targets[index]).text !== "undefined") count(targets[index])
+    });
 }
 
 
@@ -49,25 +50,25 @@ async function v1(target) {
                 ms = 10;
             } else if (i > value - 1000) {
                 ms = 1;
-                i= i+13;
+                i = i + 13;
             } else if (i > value - 5000) {
                 ms = 1;
-                i= i+127;
+                i = i + 127;
             } else if (i > value - 10000) {
                 ms = 1;
-                i= i+197;
+                i = i + 197;
             } else if (i > value - 40000) {
                 ms = 1;
-                i= i+697;
-            } 
-           // if(i < value - 200 && i %10  ) {
-            //do nothing
-           // } else {
+                i = i + 697;
+            }
+            if(i < value - 200 && i %10  ) {
+           // do nothing
+            } else {
             await sleep(ms)
-                        countDown.text(i + unit);
+            countDown.text(i + unit);
 
-           // }
-            
+            }
+
         }
     }
 }
@@ -81,37 +82,28 @@ async function v2(target) {
     let value = input.match(/(^\d+)/g);
     // console.log(unit)
     // console.log(value)
-    let ms = 10;
+    let ms = 1;
     if (isNumeric(value)) {
-        for (let i = 100; i >= 1; i--) {
-            let x = Math.floor(value / i);
+        let frames = 30;
+        for (let i =1; i <= frames; i++) {
+            let percent = Math.ceil(i/frames*100);
+            let x = Math.ceil(value/100 *percent);
+            // 50:100=x:i
+            // console.log(Math.log(value/i));
+            // let partialLog = Math.ceil(Math.log(value/i));
+            let partialLog = Math.floor(Math.log1p(percent));
+            let delay = partialLog**3;
 
-            // console.log(Math.round(x));
-            if (i > value - 5) {
-                ms = ms + 50;
-            } else if (i > value - 10) {
-                ms = ms + 10;
-            } else if (i > value - 20) {
-                ms = 40;
-            } else if (i > value - 30) {
-                ms = 30;
-            } else if (i > value - 40) {
-                ms = 20;
-            } else if (i > value - 50) {
-                ms = 10;
-            } else if (i > value - 300) {
-                ms = 10;
-            } else if (i > value - 1000) {
-                ms = 1;
-                i = i + 13;
-            }
-            await sleep(ms);
+            // console.log(percent)
+            // console.log(partialLog)
+            console.log(delay)
+            //set new value into the field
             countDown.text(x + unit);
-
-            // }
-
+            //slow down
+            await sleep(delay);
         }
     }
+
 }
 async function v3(target) {
     console.log('v3');
@@ -123,33 +115,23 @@ async function v3(target) {
     // console.log(value)
     let ms = 10;
     if (isNumeric(value)) {
-        for (let i = 100; i >= 1; i--) {
-            let x = Math.round(value / i);
+        let frames = 30;
+        for (let i =1; i <= frames; i++) {
+            let percent = Math.ceil(i/frames*100);
+            let x = Math.ceil(value/100 *percent);
+            // 50:100=x:i
+            // console.log(Math.log(value/i));
+            // let partialLog = Math.ceil(Math.log(value/i));
+            let partialLog = Math.floor(Math.log1p(percent));
+            let delay = partialLog**3*2;
 
-            // console.log(Math.round(x));
-            if (i > value - 5) {
-                ms = ms + 50;
-            } else if (i > value - 10) {
-                ms = ms + 10;
-            } else if (i > value - 20) {
-                ms = 40;
-            } else if (i > value - 30) {
-                ms = 30;
-            } else if (i > value - 40) {
-                ms = 20;
-            } else if (i > value - 50) {
-                ms = 10;
-            } else if (i > value - 300) {
-                ms = 10;
-            } else if (i > value - 1000) {
-                ms = 1;
-                i = i + 13;
-            }
-            await sleep(ms);
+            // console.log(percent)
+            // console.log(partialLog)
+            console.log(delay)
+            //set new value into the field
             countDown.text(x + unit);
-
-            // }
-
+            //slow down
+            await sleep(delay);
         }
     }
 }
@@ -163,33 +145,23 @@ async function v4(target) {
     // console.log(value)
     let ms = 10;
     if (isNumeric(value)) {
-        for (let i = 100; i >= 1; i--) {
-            let x = Math.round(value / i);
+        let frames = 30;
+        for (let i =1; i <= frames; i++) {
+            let percent = Math.ceil(i/frames*100);
+            let x = Math.ceil(value/100 *percent);
+            // 50:100=x:i
+            // console.log(Math.log(value/i));
+            // let partialLog = Math.ceil(Math.log(value/i));
+            let partialLog = Math.floor(Math.log1p(percent));
+            let delay = partialLog**3*3;
 
-            // console.log(Math.round(x));
-            if (i > value - 5) {
-                ms = ms + 50;
-            } else if (i > value - 10) {
-                ms = ms + 10;
-            } else if (i > value - 20) {
-                ms = 40;
-            } else if (i > value - 30) {
-                ms = 30;
-            } else if (i > value - 40) {
-                ms = 20;
-            } else if (i > value - 50) {
-                ms = 10;
-            } else if (i > value - 300) {
-                ms = 10;
-            } else if (i > value - 1000) {
-                ms = 1;
-                i = i + 13;
-            }
-            await sleep(ms);
+            // console.log(percent)
+            // console.log(partialLog)
+            console.log(delay)
+            //set new value into the field
             countDown.text(x + unit);
-
-            // }
-
+            //slow down
+            await sleep(delay);
         }
     }
 }
@@ -203,33 +175,23 @@ async function v5(target) {
     // console.log(value)
     let ms = 10;
     if (isNumeric(value)) {
-        for (let i = 100; i >= 1; i--) {
-            let x = Math.round(value / i);
+        let frames = 30;
+        for (let i =1; i <= frames; i++) {
+            let percent = Math.ceil(i/frames*100);
+            let x = Math.ceil(value/100 *percent);
+            // 50:100=x:i
+            // console.log(Math.log(value/i));
+            // let partialLog = Math.ceil(Math.log(value/i));
+            let partialLog = Math.floor(Math.log1p(percent));
+            let delay = partialLog**3*4;
 
-            // console.log(Math.round(x));
-            if (i > value - 5) {
-                ms = ms + 50;
-            } else if (i > value - 10) {
-                ms = ms + 10;
-            } else if (i > value - 20) {
-                ms = 40;
-            } else if (i > value - 30) {
-                ms = 30;
-            } else if (i > value - 40) {
-                ms = 20;
-            } else if (i > value - 50) {
-                ms = 10;
-            } else if (i > value - 300) {
-                ms = 10;
-            } else if (i > value - 1000) {
-                ms = 1;
-                i = i + 13;
-            }
-            await sleep(ms);
+            // console.log(percent)
+            // console.log(partialLog)
+            console.log(delay)
+            //set new value into the field
             countDown.text(x + unit);
-
-            // }
-
+            //slow down
+            await sleep(delay);
         }
     }
 }
@@ -237,6 +199,7 @@ async function v5(target) {
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
+
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
