@@ -1,0 +1,11 @@
+.counter {
+    border: 2px solid red;
+    margin: 1em;
+    padding: 1em;
+    display: inline-block;
+    width:100px;
+    text-align:center;
+}
+.buttons {
+    text-align: center;
+}
